@@ -23,7 +23,9 @@ class Conta{
 	}
 
 	public void deposita(double valor){
-		this.saldo += valor;
+		if(valor > 0){
+			this.saldo += valor;
+		}
 	}
 
 	public double rendimento(){
@@ -31,7 +33,7 @@ class Conta{
 		return rentabilidade;
 	}
 
-	public String recuperaDados(){
+	/*public String recuperaDados(){
 		String dados = "ID: " + this.id;
 		dados += "\nTitular: " + this.titular.nome;
 		dados += "\nCPF: " + this.titular.cpf;
@@ -40,6 +42,16 @@ class Conta{
 		dados += "\nAgencia: " + this.agencia;
 
 		return dados;
+	}*/
+
+
+	private void setLimite(){
+		this.limite = (this.saldo * 0.1);
 	}
+
+	public double getSaldo(){
+		return (this.saldo + this.limite);
+	}
+
 
 }
